@@ -1,0 +1,27 @@
+{
+  "name": "backend-untref-mongodb",
+  "version": "1.0.0",
+  "description": "Backend UNTREF - Argentina Programa 4.0 - Servidor Express con MongoDB",
+  "main": "./src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "express",
+    "mongodb",
+    "api",
+    "restful",
+    "nodejs",
+    "javascript"
+  ],
+  "author": "Nelson Gabriel Hernández",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongodb": "^5.7.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.44.0"
+  }
+}
