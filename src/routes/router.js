@@ -1,6 +1,7 @@
 const router = require('express').Router();
 
 const MongoDAO = require('../mongo.dao');
+const dataVerify = require('../helpers/dataverify');
 
 const mongodao = new MongoDAO();
 
@@ -11,7 +12,7 @@ router.get('/products', async (req, res) => {
     mongodao.disconnect();
     res.status(200).send({ products });
   } catch (error) {
-    console.log(error);
+    res.status(500).send({ error });
   }
 });
 
@@ -22,18 +23,18 @@ router.get('/products/:id', async (req, res) => {
     mongodao.disconnect();
     res.status(200).send({ product });
   } catch (error) {
-    console.log(error);
+    res.status(500).send({ error });
   }
 });
 
-router.post('/products', async (req, res) => {
+router.post('/products', dataVerify, async (req, res) => {
   try {
     await mongodao.connect();
     const response = await mongodao.createDocument('products', req.body);
     mongodao.disconnect();
     res.status(201).send({ response });
   } catch (error) {
-    console.log(error);
+    res.status(500).send({ error });
   }
 });
 
@@ -44,7 +45,7 @@ router.put('/products/:id', async (req, res) => {
     mongodao.disconnect();
     res.status(200).send({ response });
   } catch (error) {
-    console.log(error);
+    res.status(500).send({ error });
   }
 });
 
@@ -55,7 +56,7 @@ router.patch('/products/:id', async (req, res) => {
     mongodao.disconnect();
     res.status(200).send({ response });
   } catch (error) {
-    console.log(error);
+    res.status(500).send({ error });
   }
 });
 
@@ -66,7 +67,7 @@ router.delete('/products/:id', async (req, res) => {
     mongodao.disconnect();
     res.status(200).send({ response });
   } catch (error) {
-    console.log(error);
+    res.status(500).send({ error });
   }
 });
 
